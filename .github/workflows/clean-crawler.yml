@@ -8,6 +8,8 @@ name: Check In
 #   2. 每 7 天内至少运行一次 / Run at least once every 7 days
 
 on:
+  schedule:
+    - cron: '0 2 * * *'  # 每天 02:00（UTC）
   workflow_dispatch:
 
 jobs:

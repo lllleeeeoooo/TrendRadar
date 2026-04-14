@@ -55,8 +55,8 @@ schedule:
 platforms:
   enabled: true                         # 是否启用热榜平台抓取
   sources:
-    - id: "toutiao"
-      name: "今日头条"
+    #- id: "toutiao"
+    #  name: "今日头条"
     - id: "baidu"
       name: "百度热搜"
     - id: "wallstreetcn-hot"
@@ -65,16 +65,16 @@ platforms:
       name: "澎湃新闻"
     - id: "bilibili-hot-search"
       name: "bilibili 热搜"
-    - id: "cls-hot"
-      name: "财联社热门"
+    #- id: "cls-hot"
+    #  name: "财联社热门"
     - id: "ifeng"
       name: "凤凰网"
     - id: "tieba"
       name: "贴吧"
     - id: "weibo"
       name: "微博"
-    - id: "douyin"
-      name: "抖音"
+    #- id: "douyin"
+    #  name: "抖音"
     - id: "zhihu"
       name: "知乎"
 

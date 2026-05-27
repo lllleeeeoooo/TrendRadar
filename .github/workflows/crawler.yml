@@ -180,8 +180,7 @@ jobs:
           uv pip install requests --system 
 
       - name: 读取最新数据并同步至服务器 API
-        # 增加判断：同样只在配置了 EGG_API_URL 时才执行
-        if: success() && secrets.EGG_API_URL != ''
+        if: success()
         env:
           EGG_API_URL: ${{ secrets.EGG_API_URL }}     # 你的 Egg.js 接口地址
           EGG_API_TOKEN: ${{ secrets.EGG_API_TOKEN }} # 你的 API 鉴权 Token

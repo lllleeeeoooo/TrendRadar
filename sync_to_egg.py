@@ -41,7 +41,7 @@ def sync_data():
         cursor = conn.cursor()
 
         # 读取数据 (请确保表名正确，这里假设是 articles)
-        cursor.execute("SELECT * FROM articles")
+        cursor.execute("SELECT * FROM news_items")
         rows = cursor.fetchall()
 
         data_to_send = [dict(row) for row in rows]

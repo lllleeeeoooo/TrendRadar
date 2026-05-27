@@ -168,3 +168,21 @@ jobs:
           S3_REGION: ${{ secrets.S3_REGION }}
           GITHUB_ACTIONS: true
         run: uv run python -m trendradar
+
+      # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      # 👇👇👇 以下为你自定义的数据同步步骤 👇👇👇
+      # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+      - name: 安装 requests 依赖
+        if: success()
+        run: |
+          # 因为官方使用 uv 管理依赖，这里使用 uv 的方式安全安装 requests
+          uv pip install requests --system 
+
+      - name: 读取最新数据并同步至服务器 API
+        # 增加判断：同样只在配置了 EGG_API_URL 时才执行
+        if: success() && secrets.EGG_API_URL != ''
+        env:
+          EGG_API_URL: ${{ secrets.EGG_API_URL }}     # 你的 Egg.js 接口地址
+          EGG_API_TOKEN: ${{ secrets.EGG_API_TOKEN }} # 你的 API 鉴权 Token
+        run: python sync_to_egg.py
